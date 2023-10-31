@@ -43,11 +43,29 @@ class Rational:
     def __sub__(self, other):
         return self + -other
 
+    def __mul__(self, other):
+        return Rational((self.numer * other.numer), (self.denom * other.denom))
+
+    def __invert__(self):
+        return Rational(self.denom, self.numer)
+
+    def __truediv__(self, other):
+        return self * ~other
+
+    def __float__(self):
+        return float(self.numer / self.denom)
+
+    def __pow__(self, power, modulo=None):
+        return Rational(self.numer ** power, self.denom ** power)
+
+    def __abs__(self):
+        return Rational(abs(self.numer), self.denom)
+
 
 def main():
-    myrat = Rational(2, 5)
-    yourrat = Rational(1, 5)
-    print(myrat - yourrat)
+    myrat = Rational(3, 4)
+    yourrat = Rational(3, 5)
+    print(abs(myrat))
 
 
 if __name__ == '__main__':
